@@ -251,10 +251,3 @@ x
 # some other header
 
 # My Docsify Page
-
-
-</script>
-
-
-[filename](testrender.md ':include') 
-[filename](testrender2.md ':include') 
