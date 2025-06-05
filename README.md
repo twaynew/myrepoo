@@ -251,3 +251,65 @@ x
 # some other header
 
 # My Docsify Page
+
+This is a paragraph of text.
+
+<div id="myDiv2"></div>
+<div id="my-element">
+  This element will be modified by JavaScript.
+</div>
+<div id="my-element2">
+  ...or this element will be modified by JavaScript.
+</div>
+<div id="my-element30">
+  ...modified by JavaScript?
+</div>
+
+<script>
+    const element2 = document.getElementById("myDiv2");
+d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/api_docs/mt_bruno_elevation.csv', function(err, rows){
+function unpack(rows, key) {
+  return rows.map(function(row) { return row[key]; });
+}
+var z_data=[ ]
+for(i=0;i<24;i++)
+{
+  z_data.push(unpack(rows,i));
+}
+
+var data = [{
+  z: z_data,
+  type: 'surface',
+  contours: {
+    z: {
+      show:true,
+      usecolormap: true,
+      highlightcolor:"#42f462",
+      project:{z: true}
+    }
+  }
+}];
+
+var layout = {
+  title: {
+    text: 'Mt Bruno Elevation With Projected Contours'
+  },
+  scene: {camera: {eye: {x: 1.87, y: 0.88, z: -0.64}}},
+  autosize: false,
+  width: 500,
+  height: 500,
+  margin: {
+    l: 65,
+    r: 50,
+    b: 65,
+    t: 90,
+  }
+};
+
+Plotly.newPlot(element2, data, layout);
+});
+
+  const element = document.getElementById("my-element");
+  element.textContent = "Modified by JavaScript!";
+
+</script>
